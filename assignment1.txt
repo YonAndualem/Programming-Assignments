@@ -38,7 +38,7 @@ WHILE(selection is not equal 5)
             subtotatl= 2.25*loaves-discount
             DISPLAY"The subtotal for the bread is: $"<<subtotal
             total amount = total amount + subtotal
-        
+            eggs_total = eggs_total + subtotal
             total discount = total discount + discount
             END WHILE
 
