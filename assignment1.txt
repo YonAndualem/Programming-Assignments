@@ -1,0 +1,5 @@
+This algorithm sells items to a customer by calculating prices, discounts, coupons and displaying total value.
+Written by: -
+Written date: - Thursday, November 24, 2022.
+
+START
