@@ -3,3 +3,88 @@ Written by: -
 Written date: - Thursday, November 24, 2022.
 
 START
+DISPLAY"our inventory"
+WHILE(selection is not equal 5)
+   DISPLAY"1.Milk"
+   DISPLAY"2.Bread"
+   DISPLAY"3.Eggs"
+   DISPLAY"4.Toilet paper"
+   DISPLAY"5.Exit"
+   gallons=-1, half dozen=-1, rolls=-1, cupon=" "
+   DISPLAY"Please make a selection"
+   GET selection
+   SWITCH(selection)
+      CASE 1:
+            WHILE(gallons<0)
+               DISPLAY"How many gallons of milk would you like to buy?"
+               GET gallons
+            total gallons  total gallons+gallons
+            subtotal= 6.25*gallons
+            DISPLAY"The subtotal for the is: $"<<subtotal
+            total amount= total amount+subtoat
+            END WHILE
+ 
+      CASE 2:
+            WHILE(loaves<0)
+               DISPLAY"How many loaves of bread would you like to buy?"
+               GET loaves
+            WHILE(coupon is not bread1 or NONE)
+               DISPLAY"Please type in a coupon code or NONE"
+               GET coupon
+            IF(cupon is bread1)
+                discount= 0.75*loaves
+            ELSE
+                discount=0
+            subtotatl= 2.25*loaves-discount
+            DISPLAY"The subtotal for the bread is: $"<<subtotal
+            total amount = total amount + subtotal
+        
+            total discount = total discount + discount
+            END WHILE
+
+      CASE 3:
+            WHILE(half dozen<0)
+               DISPLAY"How many half dozens of eggs would you like to buy?"
+               GET half dozen
+               subtotal= (half dozen/2)*3.50+(half dozen %2)*2
+               DISPLAY"The subtotal for Eggs is: $"<<subtotal 
+            eggsc total = eggs total + subtotal
+            total amount = total amount + subtotal  
+            END WHILE
+
+      CASE 4:
+            WHILE(rolls<0) 
+               DISPLAY"How many rolls of toilet paper would you like to buy?"
+               GET rolls
+            IF(rolls >= or <=5)
+                subtotal = 1.99 * roll
+            ELSE IF(rolls >= 6 or <= 10)
+                subtotal = 1.49 * rolls
+            ELSE
+                subtotal = 0.99 * rolls
+            DISPLAY"The subtotal for the Toliet Paper is: $"<< subtotal
+            total amount = total amount + subtotal            
+            END WHILE
+
+      CASE 5:
+          I don't know what do( if u can do it)
+
+      DEFAULT:  
+            DISPLAY"Sorry, we do not sell that item."
+            DISPLAY"Please make another selection."
+      END SWITCH
+
+ IF(total gallons >=2)
+   DISPLAY"Total amount due: $" << total amount-(eggs total/2)
+ ELSE
+   DISPLAY"Total amount due : $" << total amount 
+ END IF 
+ 
+IF(total gallons>=2)
+   DISPLAY"Total discount: $"<<total discount +(eggs total/2) 
+ELSE
+   DISPLAY"Total discount: $"<< total discount
+END IF 
+    STOP
+
+                
