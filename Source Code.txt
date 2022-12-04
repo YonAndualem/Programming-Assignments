@@ -1,0 +1,174 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+        char selection;
+        int gallons, loaves, half_dozens, rolls, egg_selection, full_dozens, total_rolls;
+        string coupon;
+        float discount, subtotal, total_amount = 0, total_discount = 0, total_gallons = 0, eggs_total = 0;
+        // Ask user to add item again and again untill user selection is 5 i.e exit
+
+        gallons = -1, half_dozens = -1, full_dozens = -1, loaves = -1, rolls = -1, total_rolls = 0;
+        //coupon = "";
+        while (selection != '5')
+        {
+                // Printing inventory items
+                cout << "Welcome to YNY Store" << endl;
+                cout << "Our inventory:" << endl;
+                cout << "1. Milk" << endl;
+                cout << "2. Bread" << endl;
+                cout << "3. Eggs" << endl;
+                cout << "4. Toilet Paper" << endl;
+                cout << "5. Exit" << endl
+                     << endl;
+
+                // Asking user to make a selection from inventory
+                cout << "Please make a selection: ";
+                cin >> selection;
+                switch (selection)
+                {
+                        // If user selects 1 i.e Milk than ask user amount of milk in gallons and calculate subtotal, total and total gallons of milk purchased
+                case '1':
+                        while (gallons < 0)
+                        {
+                                cout << "\n       How many gallons of milk would you like to buy? ";
+                                cin >> gallons;
+                        }
+                        total_gallons = total_gallons + gallons;
+                        subtotal = 6.25 * gallons;
+                        cout << "       The subtotal for milk is: $" << subtotal << endl
+                             << endl;
+                        total_amount = total_amount + subtotal;
+                        break;
+                        // If user selects 2 i.e Bread than ask user number of loaves, coupon code and calculate subtotal, total and discount
+                case '2':
+                        while (loaves < 0)
+                        {
+                                cout << "\n       How many loaves of bread would you like to buy? ";
+                                cin >> loaves;
+                        }
+                        while (coupon != "R" && coupon != "N")
+                        {
+                                cout << "       Please type in a coupon code or N: ";
+                                cin >> coupon;
+                        }
+                        if (coupon == "bread1")
+                        {
+                                discount = 0.75 * loaves;
+                        }
+                        else
+                        {
+                                discount = 0;
+                        }
+                        subtotal = 2.25 * loaves - discount;
+                        cout << "       The subtotal for the Bread is: $" << subtotal << endl
+                             << endl;
+                        total_amount = total_amount + subtotal;
+
+                        total_discount = total_discount + discount;
+                        discount = 0;
+                        break;
+                        // If user selects 3 i.e Eggs than ask user amount of half dozen eggs and calculate subtotal and total
+                case '3':
+                        cout << "Do you want to buy half dozen or full dozen? (Please select (1 or 2)";
+                        cin >> egg_selection;
+                        if (egg_selection == 1)
+                        {
+                                while (half_dozens < 0)
+                                {
+                                        cout << "\n       How many half dozens of eggs would you like to buy? ";
+                                        cin >> half_dozens;
+                                }
+                                subtotal = half_dozens * 2;
+                                cout << "       The subtotal for the Eggs is: $" << subtotal << endl
+                                     << endl;
+                        }
+                        else if (egg_selection == 2)
+                        {
+                                while (full_dozens < 0)
+                                {
+                                        cout << "\n       How many full dozens of eggs would you like to buy? ";
+                                        cin >> full_dozens;
+                                        subtotal = full_dozens * 3.50;
+                                        cout << "       The subtotal for the Eggs is: $" << subtotal << endl
+                                             << endl;
+                                }
+                        }
+                        else
+                        {
+                                cout << "Wrong input" << endl;
+                        }
+
+                        eggs_total = eggs_total + subtotal;
+                        total_amount = total_amount + subtotal;
+                        break;
+                // If user selects 1 i.e Milk than ask user amount of milk in gallons and calculate subtotal and total
+                case '4':
+                        while (rolls < 0)
+                        {
+                                cout << "\n       How many rolls of toilet paper would you like to buy? ";
+                                cin >> rolls;
+                        }
+                        if (rolls >= 1 && rolls <= 5)
+                        {
+                                total_rolls = total_rolls + rolls;
+                                if (total_rolls >= 10)
+                                {
+                                        subtotal = 1.49 * total_rolls;
+                                }
+
+                                else
+                                {
+                                        subtotal = 1.99 * rolls;
+                                }
+                        }
+                        else if (rolls >= 6 && rolls <= 10)
+                        {
+                                subtotal = 1.49 * rolls;
+                        }
+                        else
+                        {
+                                subtotal = 0.99 * rolls;
+                        }
+                        cout << "       The subtotal for the Toliet Paper is: $" << subtotal << endl
+                             << endl;
+
+                        total_amount = total_amount + subtotal;
+
+                        rolls = -1;
+
+                        break;
+                        // If user selects 5 i.e exit, then the loop will stop
+                case '5':
+                        cout << "Thank You for shopping from us" << endl
+                             << endl;
+                        break;
+                // If user selects invalid choice then show message
+                default:
+                        cout << "Sorry, we do not sell that item." << endl;
+                        cout << "Please make another selection." << endl
+                             << endl;
+                        break;
+                }
+        }
+        // Printing total amount due of all items purchased
+        if (total_gallons >= 2)
+        {
+                cout << "Total amount due : $" << total_amount - (eggs_total / 2) << endl;
+        }
+        else
+        {
+                cout << "Total amount due : $" << total_amount << endl;
+        }
+        // Printing total disount
+        // If total gallons of milk is atleast 2 then eggs will get half discount otherwise dicount will not be applied
+        if (total_gallons >= 2)
+        {
+                cout << "Total discount : $" << total_discount + (eggs_total / 2) << endl;
+        }
+        else
+        {
+                cout << "Total discount : $" << total_discount << endl;
+        }
+}
